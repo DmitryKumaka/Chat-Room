@@ -1,0 +1,87 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.text_header{
+  text-align: center;
+  color: white;
+  padding-top: 10px;
+  margin: 0;
+}
+
+.half{
+  width: 45%;
+  padding: 0;
+  overflow: auto;
+  max-height: 550px;
+  float: left;
+
+}
+
+.room-container{
+  border-color: #3b88b9;
+  margin: 10px 20px 10px 20px;
+  width: 90%;
+}
+
+.room-info, .room-links{
+  margin: 0;
+  padding: 0;
+}
+
+.room-info{
+  margin-left: 30px;
+  display:inline-block;
+}
+
+.room-links{
+  margin: 10px;
+  float: right;
+}
+
+.room-link{
+  text-align: center;
+  padding-bottom: 20px;
+  padding-left: 10px;
+}
+
+.logout_header{
+  float:right;
+  margin: 0;
+  padding: 15px 10px 10px 10px;
+  color: white;
+}
+
+.logout_header:hover{
+  color: white;
+  text-decoration: solid;
+}
+
+.new-room{
+  border-color: #3b88b9;
+  margin: 0px 150px ;
+  width: 30%;
+  height: 30%;
+  float: right;
+}
+
+.new-message{
+  border-color: #3b88b9;
+  margin: 30px 150px ;
+  width: 30%;
+  height: 30%;
+  float: right;
+}
+
+.edit-room{
+  width: 30%;
+}
+
+.back {
+  float: left;
+}
+
+.edit-user{
+  float: right;
+}
+
+

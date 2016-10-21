@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Applikey</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <div class="container-fluid">
+    <div class="header">
+      <nav class="navbar navbar-light header" style="background-color: #3b88b9;">
+        <% if user_signed_in? %>
+            <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: "logout_header" %>
+        <% end %>
+        <% if /\/$/.match request.original_url %>
+            <h3 class="text_header">Chat - Rooms</h3>
+        <% elsif /messages$/.match request.original_url %>
+            <h3 class="text_header">Messages</h3>
+        <% end %>
+      </nav>
+    </div>
+    <%= yield %>
+  </div>
+  </body>
+</html>
+

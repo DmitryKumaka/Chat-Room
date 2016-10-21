@@ -1,0 +1,38 @@
+<div class="nav-links">
+  <div class="back">
+    <%= link_to "<< Back", root_path  %>
+  </div>
+  <div class="message-header">
+    <h2 class="text-center"> <%= @room.name %> room</h2>
+  </div>
+</div>
+<div class="half">
+  <% @messages.each do |message| %>
+      <div class="room-container well">
+        <div class="room-info">
+          <div class="room-name">
+            <h4><%= message.text %></h4>
+          </div>
+          <div class="room-creator">
+            <span>Created by: <%= message.user.email %></span>
+          </div>
+          <div class="room-date">
+            <%= message.created_at.to_date %>
+          </div>
+        </div>
+        <% if current_user && current_user.id == message.user.id  %>
+            <div class="room-links">
+              <div class="room-link">
+                <%= link_to "Edit", edit_room_message_path(@room, message)  %>
+              </div>
+              <div class="room-link">
+                <%= link_to "Delete", [@room, message], method: :delete %>
+              </div>
+            </div>
+        <% end %>
+      </div>
+  <% end %>
+</div>
+<div class="new-message well">
+  <%= render 'messages/new'%>
+</div>
