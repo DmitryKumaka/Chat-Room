@@ -15,6 +15,11 @@
         <% if user_signed_in? %>
             <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: "logout_header" %>
         <% end %>
+        <% if current_user && current_user.avatar? %>
+            <div class="round-image-50 in-header"><%= image_tag(current_user.avatar.url(:thumb)) %></div>
+        <% elsif current_user && current_user.avatar? == false %>
+            <div class="round-image-50 in-header"><%= image_tag("no-avatar.jpg") %></div>
+        <% end %>
         <% if /\/$/.match request.original_url %>
             <h3 class="text_header">Chat - Rooms</h3>
         <% elsif /messages$/.match request.original_url %>
@@ -22,6 +27,7 @@
         <% end %>
       </nav>
     </div>
+    <%= render 'layouts/flash' %>
     <%= yield %>
   </div>
   </body>

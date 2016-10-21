@@ -14,6 +14,7 @@ class MessagesController < ApplicationController
     message.user_id = current_user.id
     message.save
     redirect_to room_messages_path(@room)
+    flash[:success] = "Message successfully created"
   end
 
   def edit
@@ -26,6 +27,7 @@ class MessagesController < ApplicationController
     message = @room.messages.find(params[:id])
     message.update(message_params)
     redirect_to room_messages_path(@room)
+    flash[:success] = "Message successfully updated"
   end
 
   def destroy
@@ -34,11 +36,6 @@ class MessagesController < ApplicationController
     message.destroy
     redirect_to room_messages_path(@room)
   end
-
-
-
-
-
 
   private
 

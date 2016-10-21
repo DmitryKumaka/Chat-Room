@@ -11,6 +11,7 @@ class RoomsController < ApplicationController
   def create
     @room = current_user.rooms.create(room_params)
     redirect_to root_path
+    flash[:success] = "Room successfully created"
   end
 
   def edit
@@ -19,6 +20,7 @@ class RoomsController < ApplicationController
   def update
     @room.update(room_params)
     redirect_to root_path
+    flash[:success] = "Room successfully created"
   end
 
   def destroy

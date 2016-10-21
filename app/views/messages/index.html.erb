@@ -7,8 +7,16 @@
   </div>
 </div>
 <div class="half">
+  <% if @messages.count == 0 %>
+      <h3 class="text-center">Page is empty</h3>
+  <% end %>
   <% @messages.each do |message| %>
       <div class="room-container well">
+        <% if message.user.avatar? %>
+            <div class="round-image-50 in-message"><%= image_tag(message.user.avatar.url(:thumb)) %></div>
+        <% else %>
+            <div class="round-image-50 in-message"><%= image_tag("no-avatar.jpg") %></div>
+      <% end %>
         <div class="room-info">
           <div class="room-name">
             <h4><%= message.text %></h4>
@@ -26,7 +34,7 @@
                 <%= link_to "Edit", edit_room_message_path(@room, message)  %>
               </div>
               <div class="room-link">
-                <%= link_to "Delete", [@room, message], method: :delete %>
+                <%= link_to "Delete", [@room, message], method: :delete, remote: true, class: "delete-link" %>
               </div>
             </div>
         <% end %>

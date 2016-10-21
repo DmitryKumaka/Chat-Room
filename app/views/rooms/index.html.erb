@@ -1,9 +1,18 @@
 <div class="edit-user">
   <h5>  <%= button_to "Edit User", edit_user_registration_path, method: :get, class: "btn btn-success"  %></h5>
 </div>
+
 <div class="half">
-  <% @rooms.each do |room| %>
+  <% if @rooms.count == 0 %>
+  <h3 class="text-center">Page is empty</h3>
+  <% end %>
+<% @rooms.each do |room| %>
         <div class="room-container well">
+          <% if room.user.avatar? %>
+              <div class="round-image-50 in-message"><%= image_tag(room.user.avatar.url(:thumb)) %></div>
+          <% else %>
+              <div class="round-image-50 in-message"><%= image_tag("no-avatar.jpg") %></div>
+          <% end %>
           <div class="room-info">
             <div class="room-name">
               <h4> <%= link_to room.name, room_messages_path(room) %></h4>
@@ -21,7 +30,7 @@
                   <%= link_to "Edit", edit_room_path(room) %>
                 </div>
                 <div class="room-link">
-                  <%= link_to "Delete", room, method: :delete %>
+                  <%= link_to "Delete", room, method: :delete, remote: true, class: "delete-link" %>
                 </div>
               </div>
           <% end %>
