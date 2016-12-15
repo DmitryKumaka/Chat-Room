@@ -12,6 +12,8 @@ $(document).ready(function () {
             $('.half').append('<h3 class="text-center">Page is empty</h3>')
         }
 
+
+
     });
 });
 
