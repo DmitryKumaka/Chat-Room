@@ -6,6 +6,7 @@
   <% if @rooms.count == 0 %>
   <h3 class="text-center">Page is empty</h3>
   <% end %>
+
 <% @rooms.each do |room| %>
         <div class="room-container well">
           <% if room.user.avatar? %>
@@ -37,6 +38,7 @@
         </div>
   <% end %>
 </div>
+
 <div class="new-room well">
   <%= render 'rooms/new'%>
 </div>

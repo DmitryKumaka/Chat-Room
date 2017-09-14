@@ -2,7 +2,6 @@ class RoomsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_room, only: [:edit, :update, :destroy]
 
-
   def index
     @room = Room.new
     @rooms = Room.order("created_at DESC")
@@ -37,5 +36,4 @@ class RoomsController < ApplicationController
   def room_params
     params.require(:room).permit(:name)
   end
-
 end
